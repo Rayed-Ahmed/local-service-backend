@@ -6,16 +6,19 @@ import {
   Patch,
   Post,
   Req,
+  Res,
   UploadedFile,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
+import type { Response } from 'express';
 import { ProviderRegisterDto } from './dtos/provider-register.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage, MulterError } from 'multer';
 import { ServiceProviderService } from './providers/service-provider.service';
 import { JwtAuthGuard } from './common/jwt-auth.guard';
 import { UpdateProviderCategoryDto } from './dtos/update-provider-category.dto';
+import { ProviderLoginDto } from './dtos/provider-login.dto';
 
 @Controller('service-provider')
 export class ServiceProviderController {
@@ -45,6 +48,7 @@ export class ServiceProviderController {
     @UploadedFile() file: Express.Multer.File,
     @Body() providerRegisterDto: ProviderRegisterDto,
   ) {
+    console.log('controller reached');
     const fullRegisterDto = {
       ...providerRegisterDto,
       profile_image_url: file.path,
@@ -53,7 +57,7 @@ export class ServiceProviderController {
   }
 
   @Post('login')
-  login(@Body() providerLoginDto: ProviderRegisterDto) {
+  login(@Body() providerLoginDto: ProviderLoginDto) {
     return this.serviceProviderService.login(providerLoginDto);
   }
 

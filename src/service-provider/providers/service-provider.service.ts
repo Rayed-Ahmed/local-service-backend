@@ -195,7 +195,8 @@ export class ServiceProviderService {
       text: `Hello ${provider.fullName}, click the link below to reset your password.`,
       html: `<h3>Hello ${provider.fullName}</h3>
              <p>Click this link to reset your password:</p>
-             <a href="http://localhost:3000/service-provider/reset-password/${provider.id}">Reset Password</a>`,
+             <a href="http://localhost:8000/providers/reset-password/${provider.id}">
+             Reset Password </a>`,
     });
     return { message: 'Reset email sent!' };
   }
