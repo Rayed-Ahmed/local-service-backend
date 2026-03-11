@@ -48,4 +48,4 @@ The backend is built with **NestJS**, **PostgreSQL**, and **JWT authentication**
 
 ---
 
-# 📁 Project Structure
+
